@@ -83,3 +83,4 @@ Gunakan Postman Collection yang telah dilampirkan di e-mail dan repositori Githu
 1. Cakupan fitur dan data yang dikirim dari API masih dirasa belum cukup.
 2. Pengujian API belum menyeluruh, kemungkinan terdapat bug yang belum diketahui.
 3. Belum menggunakan prinsip clean code dan SOLID pada kode secara keseluruhan.
+4. Optimisasi dan penggunakan tools lainnya belum beragam (contoh: dapat menggunakan Redis untuk retrieval user data/role, sistem check dan retry connection secara periodik pada gRPC, dsb).
