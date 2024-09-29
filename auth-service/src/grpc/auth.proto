@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package auth;
+
+service AuthService {
+  rpc SignUp (SignUpRequest) returns (SignUpResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse);
+  rpc GetUserRoleById (GetUserRoleByIdRequest) returns (GetUserRoleByIdResponse);
+  rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse);
+}
+
+message SignUpRequest {
+  string username = 1;
+  string password = 2;
+  string fullname = 3;
+  string role = 4;
+}
+
+message SignUpResponse {
+  uint64 id = 1;
+  string username = 2;
+  string fullname = 3;
+  string role = 4;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  uint64 id = 1;
+  string token = 2;
+}
+
+message GetUserByIdRequest {
+  uint64 id = 1;
+}
+
+message GetUserByIdResponse {
+  uint64 id = 1;
+  string username = 2;
+  string fullname = 3;
+  string role = 4;
+}
+
+message GetUserRoleByIdRequest {
+  uint64 id = 1;
+}
+
+message GetUserRoleByIdResponse {
+  string role = 1;
+}
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+message ValidateTokenResponse {
+  bool is_valid = 1;
+}

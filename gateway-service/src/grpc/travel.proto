@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package travel;
+
+import "google/protobuf/timestamp.proto";
+
+service TravelService {
+  rpc CreateTravel(CreateTravelRequest) returns (TravelResponse);
+  rpc GetTravel(GetTravelRequest) returns (TravelResponse);
+  rpc UpdateTravel(UpdateTravelRequest) returns (TravelResponse);
+  rpc ListTravels(ListTravelsRequest) returns (ListTravelsResponse);
+  rpc SubmitRevision(SubmitRevisionRequest) returns (TravelResponse);
+  rpc ApproveRevision(ApproveRevisionRequest) returns (ApproveRevisionResponse);
+  rpc RejectRevision(RejectRevisionRequest) returns (RejectRevisionResponse);
+  rpc DeleteTravel (DeleteTravelRequest) returns (DeleteTravelResponse);
+}
+
+message CreateTravelRequest {
+  uint64 userId = 1;
+  google.protobuf.Timestamp startDate = 2;
+  google.protobuf.Timestamp endDate = 3;
+  string destination = 4;
+}
+
+message GetTravelRequest {
+  uint64 id = 1;
+}
+
+message UpdateTravelRequest {
+  uint64 id = 1;
+  google.protobuf.Timestamp startDate = 2;
+  google.protobuf.Timestamp endDate = 3;
+  string destination = 4;
+}
+
+message DeleteTravelRequest {
+  uint64 id = 1;
+}
+
+message DeleteTravelResponse {
+  string message = 1;
+}
+
+message ListTravelsRequest {
+  uint64 page = 1;
+  uint64 limit = 2;
+  string sort = 3;
+  string sortOrder = 4;
+}
+
+message ListTravelsResponse {
+  repeated TravelResponse items = 1;
+  uint64 totals = 2;
+  uint64 totalPages = 3;
+  uint64 currentPage = 4;
+  uint64 itemsPerPage = 5;
+}
+
+message SubmitRevisionRequest {
+  uint64 id = 1;
+  google.protobuf.Timestamp proposedStartDate = 2;
+  google.protobuf.Timestamp proposedEndDate = 3;
+  string proposedDestination = 4;
+}
+
+message ApproveRevisionRequest {
+  uint64 id = 1;
+}
+
+message ApproveRevisionResponse {
+  string message = 1;
+}
+
+message RejectRevisionRequest {
+  uint64 id = 1;
+}
+
+message RejectRevisionResponse {
+  string message = 1;
+}
+
+message TravelResponse {
+  uint64 id = 1;
+  uint64 userId = 2;
+  google.protobuf.Timestamp startDate = 3;
+  google.protobuf.Timestamp endDate = 4;
+  string destination = 5;
+  google.protobuf.Timestamp proposedStartDate = 6;
+  google.protobuf.Timestamp proposedEndDate = 7;
+  string proposedDestination = 8;
+  google.protobuf.Timestamp editRequestDate = 9;
+  google.protobuf.Timestamp createdDate = 10;
+  google.protobuf.Timestamp updatedDate = 11;
+}
+
+message Empty {}
