@@ -29,7 +29,7 @@ Mengelola data perjalanan, termasuk pembuatan, pembaruan, dan penghapusan perjal
 
 Proyek telah di deploy di GCP dengan alamat: 
 
-`URL : http://http://34.128.79.11`
+`URL : http://34.128.79.11`
 
 Gunakan Postman Collection yang telah dilampirkan di e-mail dan repositori Github.
 
